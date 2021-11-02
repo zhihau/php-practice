@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用js畫正三角形</title>
+
+</head>
+
+<body>
+    <h1>用js畫正三角形</h1>
+    <script>
+        
+        let size=5;
+        for (var i = 0; i < size; i++) {
+
+            for (var j = 0; j < (size-1)-i; j++) {
+                document.write("&nbsp;&nbsp;");
+            }
+            for (var j = 0; j < i*2+1; j++) {
+                
+                    //print all star
+                    document.write("*");
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+
+</html>
