@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>用js畫菱形</title>
 </head>
+
 <body>
     <h1>
         用js畫菱形
     </h1>
     <script>
-        
-        let size=5;
-        for (var i = 0; i < size; i++) {
-            for (var j = 0; j < size; j++) {
-                if (i == 0 || i == height-1) {
-                    //print all star
-                    document.write("*");
-                } else {
-                    if (j == 0 || j == width-1) {
-                        document.write("*");
-                    } else {
-                        document.write("&nbsp;&nbsp;");
 
-                    }
-                }
+        let size = 5;
+        let starCount = 0;
+        let whiteCount = 0;
+        if(size%2==0){
+            size=size+1;
+        }
+        for (var i = 0; i < size; i++) {
+            starCount = i * 2 + 1;
+            
+            if (starCount > size) {
+                whiteCount = i - Math.floor(size / 2);
+                // console.log("Math.floor(size / 2)="+Math.floor(size / 2));
+                // console.log("i="+i);
+                starCount = size * 2 - starCount;
+
+            } else {
+                whiteCount = Math.floor(size / 2) - i;
+
+            }
+            console.log("i:"+i+" w:"+whiteCount+" *:"+starCount);
+            for (var j = 0; j < whiteCount; j++) {
+                document.write("&nbsp;&nbsp;");
+            }
+            for (var j = 0; j < starCount; j++) {
+
+                //print all star
+                document.write("*");
             }
             document.write("<br>");
         }
     </script>
 </body>
+
 </html>
