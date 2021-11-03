@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="size=device-size, initial-scale=1.0">
+    <title>用js畫矩形含對角線</title>
+
+</head>
+
+<body>
+    <h1>用js畫矩形含對角線</h1>
+    <script>
+        let size = 19;
+        for (var i = 0; i < size; i++) {
+            for (var j = 0; j < size; j++) {
+                if (i == 0 || i == size - 1) {
+                    //print all star
+                    document.write("*");
+                } else {
+                    if (j == 0 || j == size - 1) {
+                        document.write("*");
+                    } else {
+                        if(j==i){
+                            document.write("*");
+                        }else if(j==((size-2)-(i-1))){
+                            document.write("*");
+                        }else{
+                            document.write("&nbsp;&nbsp;");
+                        }
+
+                    }
+                }
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+
+</html>
