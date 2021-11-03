@@ -11,30 +11,64 @@
 
 <body>
     <h1>用js畫矩形含對角線</h1>
+    <form action="" id="myForm">
+        <p>
+
+            <input type="number" name="size" id="size" value="8">
+        </p>
+        <p>
+
+            <input type="submit" value="GO">
+        </p>
+        <div id="draw">
+
+        </div>
+    </form>
     <script>
-        let size = 19;
+        const form = document.getElementById("myForm");
+        const sizeInput=document.getElementById("size");
+        const drawRegion=document.getElementById("draw");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            let size=sizeInput.value;
+            drawRegion.innerHTML=drawRectangle(size);
+        })
+        function drawRectangle(size){
+            // let size = 19;
+            let html="";
         for (var i = 0; i < size; i++) {
             for (var j = 0; j < size; j++) {
                 if (i == 0 || i == size - 1) {
                     //print all star
-                    document.write("*");
+                    // document.write("*");
+                    html+="*";
                 } else {
                     if (j == 0 || j == size - 1) {
-                        document.write("*");
+                        // document.write("*");
+                        html+="*";
                     } else {
-                        if(j==i){
-                            document.write("*");
-                        }else if(j==((size-2)-(i-1))){
-                            document.write("*");
-                        }else{
-                            document.write("&nbsp;&nbsp;");
+                        if (j == i) {
+                            html+="*";
+                            // document.write("*");
+                        } else if (j == ((size - 2) - (i - 1))) {
+                            // document.write("*");
+                            html+="*";
+                        } else {
+                            html+="&nbsp;&nbsp;";
+                            // document.write("&nbsp;&nbsp;");
                         }
 
                     }
                 }
             }
-            document.write("<br>");
+            html+="<br>";
+            // document.write("<br>");
         }
+        return html;
+        }
+    </script>
+    <script>
+        
     </script>
 </body>
 
