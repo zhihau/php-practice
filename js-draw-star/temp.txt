@@ -1,0 +1,6 @@
+diamond
+rightTriangle
+invertedRightTriangle
+equilateralTriangle
+rectangle
+rectangleWithDiagonal
