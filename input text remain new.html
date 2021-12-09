@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <input disabled maxlength="5" size="5" value="10" id="counter" /><!-- maxlength="10" -->
+   
+    <textarea
+    oninput="textCounter(this,'counter',10);" maxlength="10"
+      
+      id="message"
+    ></textarea>
+    <table id="blocks"></table>
+    <div class="alert alert-info d-none" id="info">
+      最多輸入<strong>10</strong>個字元。
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+      var html = "<tr>";
+      for (var i = 0; i < 10; i++) {
+        html += "<td>";
+        html +=
+          "<div style='background-color:lightgrey;width:10px;height:4px;margin-right:5px;'></div>";
+        html += "</td>";
+      }
+      html += "</tr>";
+      document.getElementById("blocks").innerHTML = html;
+      console.log(
+        document.getElementById("blocks").childNodes[0].childNodes[0]
+          .childNodes[0].childNodes[0]
+      );
+      // td[], div
+      function textCounter(field, field2, maxlimit) {
+        console.log(field.value + ",len:" + field.value.length);
+        var countfield = document.getElementById(field2);
+        // if (field.value.length <= maxlimit) {
+          countfield.value = maxlimit - field.value.length;
+          countfield.value+="/10";
+
+          var tdList =
+            document.getElementById("blocks").childNodes[0].childNodes[0]
+              .childNodes;
+          console.log(field.value.length);
+          for (var i = 0; i < 10; i++) {
+            tdList[i].childNodes[0].style.backgroundColor = "lightgrey";
+          }
+          for (var i = 0; i < field.value.length; i++) {
+            tdList[i].childNodes[0].style.backgroundColor = "blue";
+          }
+        // }else{
+        //   console.log("aaa");
+        //   document.getElementById("info").removeClass("d-none");
+        // }
+      }
+    </script>
+  </body>
+</html>

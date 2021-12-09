@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input disabled maxlength="3" size="3" value="10" id="counter" /><!-- maxlength="10" -->
+    <!-- (就技術部支援 onkeyup 只能抓到字元 不能抓到backspace 或paste 動作 -->
+    <!--  oninput="textCounter(this,'counter',10);"-->
+    <textarea
+     onkeyup="textCounter(this,'counter',10);"
+      
+      id="message"
+    ></textarea>
+    <table id="blocks"></table>
+    <script>
+      var html = "<tr>";
+      for (var i = 0; i < 10; i++) {
+        html += "<td>";
+        html +=
+          "<div style='background-color:lightgrey;width:10px;height:4px;margin-right:5px;'></div>";
+        html += "</td>";
+      }
+      html += "</tr>";
+      document.getElementById("blocks").innerHTML = html;
+      console.log(
+        document.getElementById("blocks").childNodes[0].childNodes[0]
+          .childNodes[0].childNodes[0]
+      );
+      // td[], div
+      function textCounter(field, field2, maxlimit) {
+        console.log(field.value + ",len:" + field.value.length);
+        var countfield = document.getElementById(field2);
+        if (field.value.length > maxlimit) {
+          field.value = field.value.substring(0, maxlimit);
+
+          return false;
+        } else {
+          countfield.value = maxlimit - field.value.length;
+
+          var tdList =
+            document.getElementById("blocks").childNodes[0].childNodes[0]
+              .childNodes;
+          console.log(field.value.length);
+          for (var i = 0; i < 10; i++) {
+            tdList[i].childNodes[0].style.backgroundColor = "lightgrey";
+          }
+          for (var i = 0; i < field.value.length; i++) {
+            tdList[i].childNodes[0].style.backgroundColor = "blue";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
